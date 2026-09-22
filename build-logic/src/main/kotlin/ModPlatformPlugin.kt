@@ -554,7 +554,7 @@ abstract class ModPlatformPlugin @Inject constructor() : Plugin<Project> {
 		minecraftVersions.addAll(listOf(currentVersion) + additionalVersions)
 
 		// Environment
-		environment = ModrinthEnvironment.SERVER_ONLY_CLIENT_OPTIONAL
+		environment = ModrinthEnvironment.CLIENT_ONLY
 
 		if (!staging) {
 			deps.required.forEach { dep -> whenNotNull(dep.modrinth) { requires(it) } }
@@ -573,11 +573,13 @@ abstract class ModPlatformPlugin @Inject constructor() : Plugin<Project> {
 	) = curseforge {
 		projectId = project.prop("publish.curseforge.id")
 		this.accessToken = accessToken
-		minecraftVersions.addAll(listOf(currentVersion) + additionalVersions)
+		var currentPublishVersion = project.prop("publish.curseforge.mainVersionOverride")
+		if (currentPublishVersion.isNullOrEmpty()) currentPublishVersion = currentVersion
+		minecraftVersions.addAll(listOf(currentPublishVersion) + additionalVersions)
 
 		// Environment
-		server = true
-		client = false
+		server = false
+		client = true
 
 		deps.required.forEach { dep -> whenNotNull(dep.curseforge) { requires(it) } }
 		deps.optional.forEach { dep -> whenNotNull(dep.curseforge) { optional(it) } }
