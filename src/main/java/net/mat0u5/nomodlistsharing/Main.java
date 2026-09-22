@@ -49,28 +49,4 @@ public class Main {
 		/*return new ForgePlatform();
 		*///?}
 	}
-
-	public static void serverInit(MinecraftServer server) {
-		Main.LOGGER.info("[{}] Server Init!", Main.MOD_ID);
-		List<String> list = List.of("Test", "Downgrader");
-		Map<String, String> map = Map.of("Key", "Value");
-
-		Main.LOGGER.info("[DowngraderTest] Success! List: " + list);
-		Main.LOGGER.info("[DowngraderTest] Success! Map: " + map);
-
-		try {
-			//? if forge && <=1.15 {
-			/*int ticks = server.tickCounter;
-			 *///?} else {
-			int ticks = server.tickCount;
-			//?}
-			Main.LOGGER.info("[AccessTest] OK - the private MinecraftServer tick counter is accessible (value: {})", ticks);
-		} catch (Throwable t) {
-			Main.LOGGER.error("[AccessTest] FAILED - the access widener / access transformer was not applied", t);
-		}
-	}
-
-	public static void levelLoad() {
-		Main.LOGGER.info("[{}] Level Loaded!", Main.MOD_ID);
-	}
 }
