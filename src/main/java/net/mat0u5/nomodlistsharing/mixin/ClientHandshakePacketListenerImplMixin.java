@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import java.util.Map;
 
 @Mixin(value = ClientHandshakePacketListenerImpl.class, priority = 1)
-@MixinEnvironment(type = MixinEnvironment.Env.MAIN)
+@MixinEnvironment(type = MixinEnvironment.Env.CLIENT)
 public class ClientHandshakePacketListenerImplMixin {
 	@WrapOperation(method = "handleLoginFinished", at = @At(value = "INVOKE", target = "Lnet/minecraft/network/Connection;send(Lnet/minecraft/network/protocol/Packet;)V"))
 	private void changePacket(Connection instance, Packet<?> packet, Operation<Void> original) {

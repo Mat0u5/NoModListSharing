@@ -8,8 +8,10 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "ClientHandshakePacketListenerImplMixin",
-    "ModListPayloadMixin"
+    "ModListPayloadMixin",
+    "ServerCommonPacketListenerImplMixin"
   ],
-  "client": []
+  "client": [
+    "ClientHandshakePacketListenerImplMixin"
+  ]
 }
